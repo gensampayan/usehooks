@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom"
 import { FaUser } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
+import { useContext } from "react";
+import CartContext from "../state/CartContext";
 
 function Header() {
   const activeStyles = {
@@ -12,6 +14,9 @@ function Header() {
 function fakeLogOut() {
   localStorage.removeItem("loggedin")
 }
+
+const { cart } = useContext(CartContext);
+const showNotification = cart.length !== 0;
 
   return (
     <header>
@@ -51,9 +56,14 @@ function fakeLogOut() {
           className="cart-link"
           to="purchases"
         >
-          <FaCartShopping 
-            className="cart-icon"
-          />
+          {showNotification ? (
+            <div className="cart-icon-container">
+              <FaCartShopping className="cart-icon" />
+              <span className="cart-notification">{cart.length}</span>
+            </div>
+          ) : (
+            <FaCartShopping className="cart-icon" />
+          )}
         </Link>
       </div>
     </header>

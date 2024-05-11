@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link, useParams, useLocation } from "react-router-dom"
 import { getProduct } from "../../api"
+import CartContext from "../../state/CartContext"
 
 function ProductDetail() {
   const [product, setProduct] = useState(null)
+  const [buttonClicked, setButtonClicked] = useState(false);
   const { id } = useParams()
   const location = useLocation()
   
@@ -26,6 +28,13 @@ function ProductDetail() {
   .map(word => word.charAt(0).toUpperCase() + word.slice(1))
   .join(" ");
 
+  const { dispatch } = useContext(CartContext)
+
+  function handleAddToCart(product) {
+    dispatch({type: 'ADD_PRODUCT', payload: product})
+    setButtonClicked(true);
+  }
+
   return (
     <div className="product-details-container">
       <Link
@@ -46,15 +55,10 @@ function ProductDetail() {
               <h2>{product.description}</h2>
               <p>${product.price}</p>
               <p>Rating: {product.rating?.rate}</p>
-              <Link
-                to={{
-                  pathname: "/purchases",
-                  state: { product: product }
-                }}
-              >
-                <button className="cart-btn">Add to Cart</button>
-              </Link>
-            </div>
+                {!buttonClicked && ( 
+                  <button className="add-btn" onClick={() => handleAddToCart(product)}>Add to Cart</button>
+                )}            
+              </div>
           </div>
         )
       }

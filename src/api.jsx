@@ -16,16 +16,14 @@ export async function getCategories() {
   return data
 }
 
-export async function getProductInCategory(category) {
-  const res = await fetch(`https://fakestoreapi.com/products/category/${category}`)
-  const data = await res.json()
-  return data
-}
-
 export async function loginUser(creds) {
   const res = await fetch(`https://fakestoreapi.com/users`,
-    { method: "post", body: JSON.stringify(creds) }
+    { 
+      method: "post", 
+      body: JSON.stringify(creds) 
+    }
   )
+
   const data = await res.json()
 
   if (!res.ok) {

@@ -8,6 +8,7 @@
   box-sizing: border-box;
   --white-color: #FFFFFF;
   --black-color: #000000;
+  --red-color: #ff0000;
   --primary-color: #3CDA5F;
   --secondary-color: #002fa7;
   --ternary-clor: #a4bdfc;
@@ -73,6 +74,13 @@ header .login-icon, .cart-icon {
   height: 30px;
 }
 
+header .cart-notification {
+  position: absolute;
+  top: 50px;
+  color: var(--red-color);
+  font-weight: bold;
+}
+
 /* Home */
 .home-container {
   display: flex;
@@ -91,7 +99,7 @@ header .login-icon, .cart-icon {
   font-size: 2rem;
 }
 
-.home-container a, .about-container a, .cart-btn {
+.home-container a, .about-container a, .add-btn {
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -104,6 +112,21 @@ header .login-icon, .cart-icon {
   cursor: pointer;
   color: var(--white-color);
   background-color: var(--primary-color);
+}
+
+.remove-btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  width: 20%;
+  margin-top: 10px;
+  padding-block: 0.75rem;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--white-color);
+  background-color: var(--red-color);
 }
 
 /* Footer */
@@ -327,11 +350,8 @@ footer {
 
 /* Cart */
 .cart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  font-weight: bold;
+  text-align: center;
+  font-size: 26px;
 }
 
 /* NotFound */

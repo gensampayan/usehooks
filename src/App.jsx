@@ -7,10 +7,12 @@ import ProductDetail from "./pages/products/ProductDetail";
 import Purchases from "./pages/purchases/Purchases";
 import AuthRequired from "./components/AuthRequired";
 import Login from "./pages/Login";
-
+import { CartProvider } from "./state/CartContext";
 import NotFound from "./pages/NotFound";
+
 function App() {
   return (
+    <CartProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />} >
@@ -26,6 +28,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </CartProvider>
   )
 }
 
