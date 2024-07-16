@@ -70,4 +70,4 @@ const showNotification = cart.length !== 0;
   )
 }
 
-export default Header
+export default Header;

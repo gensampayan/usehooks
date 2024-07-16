@@ -102,4 +102,4 @@ const productElements = filteredProducts.map(product => (
   )
 }
 
-export default Products
+export default Products;

@@ -1,6 +1,6 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom"
 
-export default function AuthRequired() {
+function AuthRequired() {
     const isLoggedIn = localStorage.getItem("loggedin")
     const location = useLocation()
     
@@ -17,3 +17,5 @@ export default function AuthRequired() {
     }
     return <Outlet />
 }
+
+export default AuthRequired;
